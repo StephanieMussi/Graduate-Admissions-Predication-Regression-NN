@@ -50,4 +50,40 @@ The graph of losses is plotted:
 It can be seen that the model with 6 inputs converges the fastest, which is coherent with the statement above.  
 
 
-## Comparison with 4- and 5-Layer Models
+## Comparison with 4- and 5-Layer Models  
+The 4-layer model and 5-layer model with 50 neurons in each hidden layer are constructed.  
+```python
+# 4-layer model
+no_neurons_45 = 50
+if(dropout):
+         model = Sequential([Dropout(dropout_rate),
+                             Dense(no_neurons_45, activation='relu', 
+                                   kernel_initializer=RandomUniform(w_min_relu1, w_max_relu1), 
+                                   kernel_regularizer=l2(beta)),
+                             Dropout(dropout_rate),
+                             Dense(no_neurons_45, activation='relu', 
+                                   kernel_initializer=RandomUniform(w_min_relu2, w_max_relu2), 
+                                   kernel_regularizer=l2(beta)),
+                             Dropout(dropout_rate),
+                             Dense(1, activation = 'linear',
+                                   kernel_initializer=RandomUniform(w_min_linear, w_max_linear),
+                                   kernel_regularizer=l2(beta))])
+```
+The dropout layer is only added if the parameter "dropout" is __true__.  
+In total 5 models are trained:  
+* 3-layer model without dropout
+* 4-layer model without dropout
+* 4-layer model with dropout
+* 5-layer model without dropout
+* 5-layer model with dropout  
+The losses of the models are as below:  
+| Model Type | 3L | 4L | 4L (d.o.) | 5L | 5L (d.o.) |
+| :-: | :-: | :-: | :-: | :-: | :-: |
+| Loss | 0.0066 |  0.0059 | 0.0069 | 0.0066 | 0.0085 |
+
+Comparing models without dropout, the losses of 4-layer < 5-layer < 3-layer. More layers capture more information in input variables, but too many layers may cause overfitting and degrade the performance.  
+Comparing the models with/without dropout, it is observed that dropout increases the loss.  
+
+The graph of losses for all models is plotted:  
+<img src="https://github.com/StephanieMussi/Graduate_Admissions_Predication_Regression_NN/blob/main/Figures/345Loss.png" width="300" height="200">   
+
