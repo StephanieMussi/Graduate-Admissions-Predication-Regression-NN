@@ -76,6 +76,8 @@ In total 5 models are trained:
 * 4-layer model with dropout
 * 5-layer model without dropout
 * 5-layer model with dropout  
+  
+  
 The losses of the models are as below:  
 | Model Type | 3L | 4L | 4L (d.o.) | 5L | 5L (d.o.) |
 | :-: | :-: | :-: | :-: | :-: | :-: |
