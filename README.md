@@ -12,7 +12,7 @@ model = Sequential([Dense(no_neurons, activation='relu',
                           kernel_initializer=RandomUniform(w_min_linear, w_max_linear),
                           kernel_regularizer=l2(beta))])
 ```
-The model is trained with SGD optimizer for 500 epochs, and the loss curve is plotted. As it is observed, the loss converges after around 100 epochs. 
+The model is trained with SGD optimizer for 500 epochs, and the loss curve is plotted. As it is observed, the loss converges after around 100 epochs.   
 <img src="https://github.com/StephanieMussi/Graduate_Admissions_Predication_Regression_NN/blob/main/Figures/3Loss.png" width="300" height="200">  
 
 In order to have a visual perception of the prediction accuracy, the target value and prediction value of 50 samples are plotted:  
@@ -27,7 +27,8 @@ To determine which input to remove, the model is trained without _1st/2nd/.../7t
 The losses are as below:  
 | Remove which input | 1st | 2nd | 3rd | 4th | 5th | 6th | 7th |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Loss | 0.0071 |  0.0059 | 0.0058 | 0.0064 | 0.0051 | 0.0067 |  0.0065 |
+| Loss | 0.0071 |  0.0059 | 0.0058 | 0.0064 | 0.0051 | 0.0067 |  0.0065 |  
+  
 As observed, removing 5th input leads to minimum loss.  
 
 ### Remove 2 features 
@@ -42,6 +43,7 @@ The losses of using 7, 6 and 5 inputs are as below:
 | Number of inputs | 7 | 6 | 5 |
 | :-: | :-: | :-: | :-: |
 | Loss | 0.0065 | 0.0052 | 0.0054 |  
+  
 As observed, removing one inputs improve the performance while removing two inputs does the opposite. Therefore, RFE needs to stop at 6 inputs.  
 The graph of losses is plotted:  
 <img src="https://github.com/StephanieMussi/Graduate_Admissions_Predication_Regression_NN/blob/main/Figures/3RFELoss.png" width="300" height="200">   
